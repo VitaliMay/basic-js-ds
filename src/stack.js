@@ -23,7 +23,7 @@ class Stack {
     }
 
     pop() {
-      //return this.stack.pop();
+      //return this.stack.pop(); // тоже работает)
       let result = this.stack[this.stack.length-1]
       this.stack.splice(-1, 1)
       return result;
