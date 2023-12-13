@@ -23,31 +23,57 @@ const { ListNode } = require('../extensions/list-node.js');
  * }
  */
 
-
-
-
 function removeKFromList(list, k) {
-
-  let last = null
-
-  while(list.value == k){
+  // Проверяю, есть ли значения равные k в начале списка
+  while (list && list.value === k) {
     list = list.next;
   }
 
-  let tmp = list
-  last = tmp.next
+  let currentNode = list;
+  let previousNode = null;
 
-  while (tmp && tmp.value !== k) {
-    last = tmp,
-    tmp = tmp.next;
-  }
-  if (last !== null && tmp.value === k) {
-    last.next = tmp.next;
+  // Прохожу по каждому узлу списка
+  while (currentNode) {
+    if (currentNode.value === k) {
+      // Если значение равно k, пропускаею текущий узел, связывая предыдущий узел с следующим узлом
+      previousNode.next = currentNode.next;
+    } else {
+      // Если значение не равно k, перехожу к следующему узлу
+      previousNode = currentNode;
+    }
+    currentNode = currentNode.next;
   }
 
   return list;
 }
 
+/********************************************************** */
+/********************************************************** */
+
+// function removeKFromList(list, k) {
+
+//   let last = null
+
+//   while(list.value == k){
+//     list = list.next;
+//   }
+
+//   let tmp = list
+//   last = tmp.next
+
+  
+//   while (tmp && tmp.value !== k) {
+//     last = tmp,
+//     tmp = tmp.next;
+//   }
+//   if (last !== null && tmp.value === k) {
+//     last.next = tmp.next;
+//   }
+
+//   return list;
+// }
+/************************************************************** */
+/************************************************************** */
 
 module.exports = {
   removeKFromList
